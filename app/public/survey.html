@@ -222,20 +222,23 @@
         <script>
             
             $(".btn").click(function(event)
-            {var friendArr = {name: $(".name").val(), photo: $(".photo").val(), score: []
+            {var friendArr = {name: $(".name").val(), photo: $(".photo").val(), scores: []
             } 
             event.preventDefault();
            $("select").each(function() {
-                friendArr.score.push($(this).val());
+                friendArr.scores.push($(this).val());
                 
             });
             event.preventDefault();
-          
-    
         
-        $.post("/api/friends", friendArr, function(){
-          
+            
+        
+        $.post("/api/friends", friendArr, function(data){
+          alert("You're closest friend is " + data + "!")
+            
         })
+
+        
       
         
     })

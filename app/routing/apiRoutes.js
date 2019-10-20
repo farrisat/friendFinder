@@ -22,6 +22,7 @@ module.exports = function(app) {
     var scores = req.params.friendsData
     parseInt()
       res.json(compareFriend(req.body));
+      
     
     });
 }
@@ -41,12 +42,14 @@ function compareFriend(newFriend) {
     for(let i =0; i<f.scores.len;i++){
       compare +=  Math.abs(newFriend.scores[i] -f.scores[i])
     }
-    if (compare < friendBase) {
+    if (compare <= friendBase) {
       friendBase = compare;
       winner = f
     }
+   
   })
- return winner
+  console.log(winner.name);
+ return winner.name
 }
 // Convert each user's results into a simple array of numbers (ex: [5, 1, 4, 4, 5, 1, 2, 5, 4, 1]).
 // With that done, compare the difference between current user's scores against those from other users, question by question. Add up the differences to calculate the totalDifference.
